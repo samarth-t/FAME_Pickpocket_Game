@@ -7,9 +7,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main extends Application {
     Heros hero;
     Camera action;
+    Enemies enemies;
 
     boolean running, goNorth, goSouth, goEast, goWest;
 
@@ -30,7 +34,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         hero = new Heros(1200,250);
         action = new Camera(1000,0);
-
+        ArrayList<Heros.Direction> dir = new ArrayList<Heros.Direction>();
+        dir.add(Heros.Direction.DOWN);
+        enemies = new Enemies(2000,2000,dir);
         primaryStage.setTitle("Hello world");
         Group root = new Group();
         Pane pane = new Pane(root);

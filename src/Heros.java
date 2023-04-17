@@ -23,7 +23,7 @@ public class Heros {
     public Heros(double x, double y) {
         this.x = x;
         this.y = y;
-        this.imageView = new ImageView(new Image("file:./img/MC.png", 96 * 4, 16 * 4, true, false));
+        this.imageView = new ImageView(new Image("file:./img/Civ_1.png", 96 * 4, 16 * 4, true, false));
         imageView.setViewport(new Rectangle2D(20,0,65,100));
     }
 
