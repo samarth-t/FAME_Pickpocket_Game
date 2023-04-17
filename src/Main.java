@@ -22,6 +22,8 @@ public class Main extends Application {
         public void handle(long l) {
             hero.updateImageViewInScene(action,l);
             enemies.pathHandler(l);
+            boolean canSee = enemies.checkView(hero.x, hero.y);
+            System.out.println(canSee);
             enemies.updateImageViewInScene(action,l);
 
             if (goNorth) hero.inputHandler(Heros.Direction.UP);

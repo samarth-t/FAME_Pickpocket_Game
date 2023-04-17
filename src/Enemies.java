@@ -19,4 +19,13 @@ public class Enemies extends Heros{
         curDirection = path.get(index);
         inputHandler(curDirection);
     }
+
+    public boolean checkView(double heroX, double heroY) {
+        if(curDirection == Direction.LEFT) {
+            if (heroX < x && (Math.abs(y - heroY)) < imageView.getViewport().getHeight()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
