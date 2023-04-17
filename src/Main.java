@@ -16,7 +16,6 @@ public class Main extends Application {
     AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long l) {
-//            toto.physics();
             hero.updateImageViewInScene(action,l);
 
             if (goNorth) hero.inputHandler(Heros.Direction.UP);
@@ -29,7 +28,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        hero =new Heros(1200,250);
+        hero = new Heros(1200,250);
         action = new Camera(1000,0);
 
         primaryStage.setTitle("Hello world");

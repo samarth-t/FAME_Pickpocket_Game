@@ -11,14 +11,14 @@ public class Heros {
         DOWN,
         IDLE
     }
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
 
-    private Direction curDirection;
+    protected Direction curDirection;
 
-    private double speed = 1.5;
+    protected double speed = 1.5;
 
-    private ImageView imageView;
+    protected ImageView imageView;
 
     public Heros(double x, double y) {
         this.x = x;
