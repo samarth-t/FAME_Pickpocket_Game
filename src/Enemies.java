@@ -15,13 +15,8 @@ public class Enemies extends Heros{
     }
 
     public void pathHandler(long time) {
-        int index = (int) (((time/10000)/150)%path.size());
+        int index = (int) (((time/10000000)/150) % path.size());
         curDirection = path.get(index);
-        switch(curDirection) {
-            case UP:    y-=speed; break;
-            case DOWN:  y+=speed; break;
-            case LEFT:  x-=speed; break;
-            case RIGHT: x+=speed; break;
-        }
+        inputHandler(curDirection);
     }
 }

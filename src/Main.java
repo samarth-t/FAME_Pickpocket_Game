@@ -21,8 +21,8 @@ public class Main extends Application {
         @Override
         public void handle(long l) {
             hero.updateImageViewInScene(action,l);
+            enemies.pathHandler(l);
             enemies.updateImageViewInScene(action,l);
-            enemies.inputHandler(Heros.Direction.IDLE);
 
             if (goNorth) hero.inputHandler(Heros.Direction.UP);
             else if (goSouth) hero.inputHandler(Heros.Direction.DOWN);
@@ -34,12 +34,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        hero = new Heros(1200,250);
-        action = new Camera(1000,0);
+        hero = new Heros(200,250);
+        action = new Camera(0,0);
         ArrayList<Heros.Direction> dir = new ArrayList<Heros.Direction>();
         dir.add(Heros.Direction.DOWN);
+        dir.add(Heros.Direction.IDLE);
+        dir.add(Heros.Direction.LEFT);
+        dir.add(Heros.Direction.IDLE);
         dir.add(Heros.Direction.UP);
-        enemies = new Enemies(1000,300,dir);
+        dir.add(Heros.Direction.IDLE);
+        dir.add(Heros.Direction.RIGHT);
+        dir.add(Heros.Direction.IDLE);
+        enemies = new Enemies(500,100,dir);
 
         primaryStage.setTitle("Pickpocket!");
         Group root = new Group();

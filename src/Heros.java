@@ -24,7 +24,7 @@ public class Heros {
         this.x = x;
         this.y = y;
         this.imageView = new ImageView(new Image("file:./img/MC.png", 96 * 4, 16 * 4, true, false));
-        imageView.setViewport(new Rectangle2D(20,0,65,100));
+        imageView.setViewport(new Rectangle2D(20,0,64,64));
     }
 
     public ImageView getImageView() {
@@ -61,10 +61,24 @@ public class Heros {
     public void inputHandler(Direction direction) {
         curDirection = direction;
         switch(direction) {
-            case UP:    y-=speed; break;
-            case DOWN:  y+=speed; break;
-            case LEFT:  x-=speed; break;
-            case RIGHT: x+=speed; break;
+            case UP:
+                y-=speed;
+                if(y <= 0) { y = 0; }
+                break;
+            case DOWN:
+                y+=speed;
+                int charHeight = (int) imageView.getViewport().getHeight();
+                if(y >= 400-charHeight) { y = 400-charHeight; }
+                break;
+            case LEFT:
+                x-=speed;
+                if(x <= 0) { x = 0; }
+                break;
+            case RIGHT:
+                x+=speed;
+                int charWidth = (int) imageView.getViewport().getWidth();
+                if(x >= 600-charWidth) { x = 600-charWidth; }
+                break;
         }
     }
 }
