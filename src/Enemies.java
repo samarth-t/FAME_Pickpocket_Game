@@ -10,7 +10,18 @@ public class Enemies extends Heros{
     public Enemies(double x, double y, ArrayList<Direction> path) {
         super(x, y);
         this.path = path;
-        this.imageView = new ImageView(new Image("file:./img/MC.png", 96 * 4, 16 * 4, true, false));
+        this.imageView = new ImageView(new Image("file:./img/Civ_1.png", 96 * 4, 16 * 4, true, false));
         imageView.setViewport(new Rectangle2D(20,0,65,100));
+    }
+
+    public void pathHandler(long time) {
+        int index = (int) (((time/10000)/150)%path.size());
+        curDirection = path.get(index);
+        switch(curDirection) {
+            case UP:    y-=speed; break;
+            case DOWN:  y+=speed; break;
+            case LEFT:  x-=speed; break;
+            case RIGHT: x+=speed; break;
+        }
     }
 }

@@ -21,6 +21,8 @@ public class Main extends Application {
         @Override
         public void handle(long l) {
             hero.updateImageViewInScene(action,l);
+            enemies.updateImageViewInScene(action,l);
+            enemies.inputHandler(Heros.Direction.IDLE);
 
             if (goNorth) hero.inputHandler(Heros.Direction.UP);
             else if (goSouth) hero.inputHandler(Heros.Direction.DOWN);
@@ -31,20 +33,22 @@ public class Main extends Application {
     };
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         hero = new Heros(1200,250);
         action = new Camera(1000,0);
         ArrayList<Heros.Direction> dir = new ArrayList<Heros.Direction>();
         dir.add(Heros.Direction.DOWN);
-        enemies = new Enemies(2000,2000,dir);
-        primaryStage.setTitle("Hello world");
+        dir.add(Heros.Direction.UP);
+        enemies = new Enemies(1000,300,dir);
+
+        primaryStage.setTitle("Pickpocket!");
         Group root = new Group();
         Pane pane = new Pane(root);
         Scene theScene = new Scene(pane, 600, 400,true);
         primaryStage.setScene(theScene);
 
         root.getChildren().add(hero.getImageView());
-
+        root.getChildren().add(enemies.getImageView());
 
         theScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
