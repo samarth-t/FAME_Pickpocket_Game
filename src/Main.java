@@ -63,8 +63,10 @@ public class Main extends Application {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case W:    goNorth = true; break;
+                    case Z:    goNorth = true; break;
                     case S:    goSouth = true; break;
                     case A:    goWest  = true; break;
+                    case Q:    goWest  = true; break;
                     case D:    goEast  = true; break;
                 }
             }
@@ -75,8 +77,10 @@ public class Main extends Application {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case W:    goNorth = false; break;
+                    case Z:    goNorth = false; break;
                     case S:    goSouth = false; break;
                     case A:    goWest  = false; break;
+                    case Q:    goWest  = false; break;
                     case D:    goEast  = false; break;
                 }
             }

@@ -26,6 +26,21 @@ public class Enemies extends Heros{
                 return true;
             }
         }
+        if(curDirection == Direction.RIGHT) {
+            if (heroX > x && (Math.abs(y - heroY)) < imageView.getViewport().getHeight()) {
+                return true;
+            }
+        }
+        if(curDirection == Direction.UP) {
+            if (heroY < y && (Math.abs(x - heroX)) < imageView.getViewport().getWidth()) {
+                return true;
+            }
+        }
+        if(curDirection == Direction.DOWN||curDirection== Direction.IDLE) {
+            if (heroY > y && (Math.abs(x - heroX)) < imageView.getViewport().getWidth()) {
+                return true;
+            }
+        }
         return false;
     }
 }
