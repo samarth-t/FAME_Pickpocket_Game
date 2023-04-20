@@ -58,16 +58,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         hero = new Heros(200,250);
         action = new Camera(0,0);
-        ArrayList<Heros.Direction> dir = new ArrayList<Heros.Direction>();
-        dir.add(Heros.Direction.DOWN);
-        dir.add(Heros.Direction.IDLE);
-        dir.add(Heros.Direction.LEFT);
-        dir.add(Heros.Direction.IDLE);
-        dir.add(Heros.Direction.UP);
-        dir.add(Heros.Direction.IDLE);
-        dir.add(Heros.Direction.RIGHT);
-        dir.add(Heros.Direction.IDLE);
-        enemies = new Enemies(500,100,dir);
+        enemies = new Enemies(500,100);
 
         primaryStage.setTitle("Pickpocket!");
         Group root = new Group();

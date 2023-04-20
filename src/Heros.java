@@ -2,6 +2,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Heros {
 
     public enum Direction {
@@ -11,6 +14,8 @@ public class Heros {
         DOWN,
         IDLE
     }
+
+    protected final ArrayList<Direction> possibleMoves = new ArrayList<>(Arrays.asList(Direction.values()));
     protected double x;
     protected double y;
 
