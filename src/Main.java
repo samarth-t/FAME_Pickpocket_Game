@@ -29,13 +29,15 @@ public class Main extends Application {
             enemies.pathHandler(l);
             boolean canSee = enemies.checkView(hero.x, hero.y);
             System.out.println(canSee);
-            if(canSee){
+            if(canSee && pickPocketing){
                 Group loseRoot = new Group();
                 Scene loseScene = new Scene(loseRoot,600,400,true);
                 Pane losePane = new Pane(loseRoot);
                 loseRoot.getChildren().add(new ImageView(new Image("file:./img/lose.png")));
                 primaryStage.setScene(loseScene);
+                animationTimer.stop();
             }
+
             enemies.updateImageViewInScene(action,l);
 
             if (goNorth) hero.inputHandler(Heros.Direction.UP);
@@ -43,12 +45,14 @@ public class Main extends Application {
             else if (goEast)  hero.inputHandler(Heros.Direction.RIGHT);
             else if (goWest)  hero.inputHandler(Heros.Direction.LEFT);
             else hero.inputHandler(Heros.Direction.IDLE);
-            if(enemies.isClose(hero.x, hero.y)&&pickPocketing){
+
+            if(enemies.isClose(hero.x, hero.y) && pickPocketing && !canSee){
                 Group winRoot = new Group();
                 Scene victoryScene = new Scene(winRoot,600,400,true);
                 Pane victoryPane = new Pane(winRoot);
                 winRoot.getChildren().add(new ImageView(new Image("file:./img/victory.png")));
                 primaryStage.setScene(victoryScene);
+                animationTimer.stop();
             }
         }
     };

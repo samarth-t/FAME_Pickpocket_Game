@@ -14,11 +14,16 @@ public class Enemies extends Heros{
 
     private Random rand = new Random();
 
+    private Image normalImg = new Image("file:./img/Civ_1.png", 96 * 4, 16 * 4, true, false);
+    private Image alertImg = new Image("file:./img/Civ_1_Selected.png", 96 * 4, 16 * 4, true, false);
+
+
     public Enemies(double x, double y, ArrayList<Direction> path) {
         super(x, y);
         this.path = path;
 
-        this.imageView = new ImageView(new Image("file:./img/Civ_1.png", 96 * 4, 16 * 4, true, false));
+        this.imageView = new ImageView();
+        imageView.setImage(normalImg);
         imageView.setViewport(new Rectangle2D(20,0,65,100));
     }
 
@@ -29,7 +34,8 @@ public class Enemies extends Heros{
         generatePath();
         this.randomPath = true;
 
-        this.imageView = new ImageView(new Image("file:./img/Civ_1.png", 96 * 4, 16 * 4, true, false));
+        this.imageView = new ImageView();
+        imageView.setImage(normalImg);
         imageView.setViewport(new Rectangle2D(20,0,65,100));
         this.speed = 1;
     }
@@ -50,27 +56,36 @@ public class Enemies extends Heros{
     }
 
     public boolean checkView(double heroX, double heroY) {
+        boolean output = false;
+
         if(curDirection == Direction.LEFT) {
             if (heroX < x && (abs(y - heroY)) < imageView.getViewport().getHeight()) {
-                return true;
+                output = true;
             }
         }
         if(curDirection == Direction.RIGHT) {
             if (heroX > x && (abs(y - heroY)) < imageView.getViewport().getHeight()) {
-                return true;
+                output = true;
             }
         }
         if(curDirection == Direction.UP) {
             if (heroY < y && (abs(x - heroX)) < imageView.getViewport().getWidth()) {
-                return true;
+                output = true;
             }
         }
-        if(curDirection == Direction.DOWN||curDirection== Direction.IDLE) {
+        if(curDirection == Direction.DOWN || curDirection== Direction.IDLE) {
             if (heroY > y && (abs(x - heroX)) < imageView.getViewport().getWidth()) {
-                return true;
+                output = true;
             }
         }
-        return false;
+
+        // Change image based on if enemy can see player
+        if(output) {
+            this.imageView.setImage(alertImg);
+        } else {
+            this.imageView.setImage(normalImg);
+        }
+        return output;
     }
     public boolean isClose(double heroX, double heroY){
         return abs(x - heroX) < 50 && abs(y - heroY) < 50;
